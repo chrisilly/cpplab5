@@ -6,6 +6,8 @@
 class String 
 {
 char* text;
+size_t size;
+size_t capacity;
 
 void Invariant();
 
@@ -19,8 +21,8 @@ String& operator=(const String& other); // Copy assignment operator
 char& operator[](size_t i); // indexes without range check (?)
 const char& operator[](size_t i) const; // indexes without range check (?)
 
-size_t size() const; // amount of characters in the string
-size_t capacity() const; // the character limit
+size_t getSize() const; // amount of characters in the string
+size_t getCapacity() const; // the character limit
 
 void push_back(char character); // adds a character at the end
 

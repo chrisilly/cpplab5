@@ -2,7 +2,12 @@
 #include <cassert>
 #include <cstring>
 
-String::String() {}
+String::String() 
+{
+    // code here...
+
+    Invariant();
+}
 
 String::String(const char* value)
 {
@@ -11,13 +16,23 @@ String::String(const char* value)
     text = new char[capacity];
     
     std::memcpy(text, value, size);
+
+    Invariant();
 }
 
 /// @brief Copy-constructor
-String::String(const String& other) { *this = other; }
+String::String(const String& other) 
+{ 
+    *this = other; 
+
+    Invariant();
+}
 
 String& String::operator=(const String& other)
 {
+    Invariant();
+
+    // if(this != &other) {}
     // if(capacity < other.size) {}
     
     delete[] text;
@@ -26,12 +41,24 @@ String& String::operator=(const String& other)
 
     this->size = other.size;
     std::memcpy(text, other.text, size);
-    
+
+    Invariant();    
+
     return *this;
+}
+
+void String::push_back(char character)
+{
+    Invariant();
+
+    // code here...
+
+    Invariant();
 }
 
 String::~String()
 {
+    Invariant();
     // delete[] text;
 }
 
@@ -65,6 +92,8 @@ const char& String::operator[](size_t i) const { return text[i]; }
 void String::Invariant()
 {
     assert(size <= capacity);
+    assert(size >= 0);
+    assert(capacity >= 0);
     // add more asserts for everything that's true for a string class
 }
 

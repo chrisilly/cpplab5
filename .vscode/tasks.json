@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: cl.exe build all cpplab5 files",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/MDd",
+                "/EHsc",
+                "/nologo",
+                "/Fe:",
+                "${fileDirname}\\main.exe",
+                "${fileDirname}\\main.cpp",
+                "${fileDirname}\\string.cpp"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "detail": "Task found on StackOverflow."
+        }
+    ]
+}

@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) Launch",
+            "name": "(Windows) Launch Debug",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "main.exe",
@@ -15,6 +15,18 @@
             "environment": [],
             "console": "integratedTerminal",
             "preLaunchTask": "C/C++: cl.exe build all cpplab5 files"
+        },
+        {
+            "name": "(Windows) Launch and Test",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "test.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "C/C++: cl.exe build all cpplab5 files for testing"
         }
     ]
 }

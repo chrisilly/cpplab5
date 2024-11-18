@@ -22,7 +22,30 @@
                 "kind": "test",
                 "isDefault": true
             },
-            "detail": "Task found on StackOverflow."
+            "detail": "Run custom main.cpp for debugging"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: cl.exe build all cpplab5 files for testing",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/MDd",
+                "/EHsc",
+                "/nologo",
+                "/Fe:",
+                "${fileDirname}\\test.exe",
+                "${fileDirname}\\Main201025.cpp",
+                "${fileDirname}\\string.cpp"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "detail": "Build to endure pre-written testing"
         }
     ]
 }

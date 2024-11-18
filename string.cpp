@@ -23,7 +23,10 @@ String::String(const char* value)
 /// @brief Copy-constructor
 String::String(const String& other) 
 { 
-    *this = other; 
+    size = other.size;
+    capacity = other.capacity;
+    text = new char[capacity];
+    std::memcpy(text, other.text, size);
 
     Invariant();
 }

@@ -35,6 +35,20 @@ String::~String()
     // delete[] text;
 }
 
+bool operator==(const String& value, const String& other)
+{
+    if(value.size != other.size) return false;
+    // if(value.capacity != other.capacity) return false;
+
+    for (int i = 0; i < value.size; i++)
+        if(value[i] != other[i])
+            return false;
+
+    return true;
+}
+
+bool operator!=(const String& value, const String& other) { return !(value==other); }
+
 std::ostream& operator<<(std::ostream& out, const String& rhs)
 {
     for (size_t i = 0; i < rhs.size; i++)

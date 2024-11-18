@@ -5,9 +5,9 @@
 
 class String 
 {
-char* text;
 size_t size;
 size_t capacity;
+char* text;
 
 void Invariant();
 
@@ -36,7 +36,7 @@ friend bool operator!=(const String& value,
 /// @return Gives a pointer to the array holding the String (does not end in '\0')
 const char* data() const;
 
-friend std::ostream& operator<<(std::ostream& out, const String& value);
+friend std::ostream& operator<<(std::ostream& out, const String& other);
 
 ~String(); // Deallocate heap memory
 

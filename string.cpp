@@ -2,30 +2,21 @@
 #include <cassert>
 #include <cstring>
 
-String::String() 
-{
-    // code here...
-
+String::String() : size(0), capacity(0), text(new char[1] {})
+{ 
     Invariant();
 }
 
-String::String(const char* value)
+String::String(const char* value) : size(strlen(value)), capacity(size + 10), text(new char[capacity] {})
 {
-    size = strlen(value);
-    capacity = size + 10;
-    text = new char[capacity];
-    
     std::memcpy(text, value, size);
 
     Invariant();
 }
 
 /// @brief Copy-constructor
-String::String(const String& other) 
-{ 
-    size = other.size;
-    capacity = other.capacity;
-    text = new char[capacity];
+String::String(const String& other) : size(other.size), capacity(other.capacity), text(new char[capacity] {})
+{
     std::memcpy(text, other.text, size);
 
     Invariant();
@@ -35,12 +26,14 @@ String& String::operator=(const String& other)
 {
     Invariant();
 
-    // if(this != &other) {}
-    // if(capacity < other.size) {}
+    if(this == &other) return *this;
     
-    delete[] text;
-    this->capacity = other.capacity;
-    text = new char[capacity];
+    if(capacity < other.size) 
+    {
+        delete[] text;
+        this->capacity = other.capacity;
+        text = new char[capacity];
+    }
 
     this->size = other.size;
     std::memcpy(text, other.text, size);
@@ -79,7 +72,7 @@ void String::reserve(size_t newCapacity)
 String::~String()
 {
     Invariant();
-    // delete[] text;
+    delete[] text;
 }
 
 bool operator==(const String& value, const String& other)
@@ -96,11 +89,11 @@ bool operator==(const String& value, const String& other)
 
 bool operator!=(const String& value, const String& other) { return !(value==other); }
 
-std::ostream& operator<<(std::ostream& out, const String& rhs)
+std::ostream& operator<<(std::ostream& out, const String& other)
 {
-    for (size_t i = 0; i < rhs.size; i++)
+    for (size_t i = 0; i < other.size; i++)
     {
-        out << rhs[i];
+        out << other[i];
     }
 
     return out;

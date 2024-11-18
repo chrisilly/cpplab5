@@ -54,9 +54,26 @@ void String::push_back(char character)
 {
     Invariant();
 
-    // code here...
+    if(size == capacity)
+        if(capacity == 0)
+            reserve(1);
+        else
+            reserve(2 * capacity);
+
+    text[size++] = character;
 
     Invariant();
+}
+
+void String::reserve(size_t newCapacity)
+{
+    assert(newCapacity > this->capacity);
+
+    char* newData = new char[newCapacity];
+    std::memcpy(newData, text, size);
+    delete[] text;
+    text = newData;
+    capacity = newCapacity;
 }
 
 String::~String()

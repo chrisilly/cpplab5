@@ -13,3 +13,6 @@ In order to implement a `friend` method declared in a class in a header file, yo
 Y'all have written some functions with lower-case beginnings i.e. `push_back()` or `shrink_to_fit()` but some with capital letters i.e. `Invariant()`. This confuses me; what are the naming conventions??? What should I stick to?? 😵
 
 Really wish someone had told me about `std::memcpy()` for this assignment.
+
+adding curly brackets when doing `char* var = new char[num] {}` calls array constructor which means no garbage data 👍 You can also do it on the stack! `const char x[] = {}`.
+

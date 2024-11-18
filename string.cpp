@@ -56,3 +56,4 @@ void String::Invariant()
 
 size_t String::getSize() const { return size; }
 size_t String::getCapacity() const { return capacity; }
+const char* String::data() const { return text; }
